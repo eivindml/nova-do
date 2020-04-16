@@ -1,0 +1,87 @@
+{
+    "identifier": "madebymist.Do",
+    "name": "Do",
+    "vendor": "Mist",
+    "description": "List out all your comment todo items.",
+    "version": "1.0.0",
+    "categories": ["sidebars"],
+    
+    "main": "main.js",
+    
+    "activationEvents": [
+        "onLanguage:javascript"
+    ],
+    
+    "entitlements": {
+        "filesystem": "readonly"
+    },
+    
+    "sidebars": [
+        {
+            "id": "do",
+            "name": "Do",
+            "smallImage": "icon-small",
+            "smallSelectedImage": "icon-small-selected",
+            "largeImage": "icon",
+            "largeSelectedImage": "icon",
+            "sections": [
+                {
+                    "id": "do",
+                    "name": "Do",
+                    "allowMultiple": true,
+                    "placeholderText": "No profiles have been created.",
+                    "placeholderImage": "mysidebar-placeholder",
+                     "headerCommands": [
+                        {
+                            "title": "Refresh",
+                            "image": "__builtin.refresh",
+                            "tooltip": "Refresh Commands",
+                            "command": "taskfinder.refresh"
+                        },
+                        {
+                            "title": "Options",
+                            "image": "__builtin.action",
+                            "tooltip": "Extension Options",
+                            "command": "taskfinder.loadOptions"
+                        }
+                    ],
+                    "contextCommands": [
+                        {
+                            "title": "Remove",
+                            "command": "do.remove",
+                            "when": "viewItem != null"
+                        },
+                        {
+                            "title": "Show in Finder",
+                            "command": "do.showInFinder",
+                            "when": "viewItem != null"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "config-workspace": [
+        {
+            "key": "taskfinder.package-manager",
+            "title": "Package Manager",
+            "type": "enum",
+            "values": ["npm", "yarn"],
+            "default": "npm"
+        },
+        {
+            "key": "taskfinder.ignored-files",
+            "title": "Files to ignore",
+            "description": "A list of files/folders not to traverse.",
+            "type": "text",
+            "default": "node_modules\nvendor"
+        },
+        {
+            "key": "taskfinder.recursive-search",
+            "title": "Recursive Search",
+            "description": "Whether to search for tasks in project subdirectories.",
+            "type": "boolean",
+            "default": false
+        }
+    ]
+}
